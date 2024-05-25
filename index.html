@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>在线客服</title>
+    <style>
+        .dotting {
+            display: inline-block; width: 10px;
+            height: 2px;
+            padding-right: 2px;
+            border-left: 2px solid currentColor; border-right: 2px solid currentColor;
+            background-color: currentColor; background-clip: content-box;
+            box-sizing: border-box;
+            -webkit-animation: dot 1.5s infinite step-start both;
+            animation: dot 1.5s infinite step-start both;
+            *zoom: expression(this.innerHTML = '...');  /*IE7 */
+        }
+        .dotting:before { content: '...'; } /* IE8 */
+        .dotting::before { content: ''; }
+        :root .dotting { margin-left: 2px; padding-left: 2px; } /* IE9+ */
+
+        @-o-keyframes dot {
+            25% { border-color: transparent; background-color: transparent; }
+            50% { border-right-color: transparent; background-color: transparent; }
+            75% { border-right-color: transparent; }
+        }
+        @-ms-keyframes dot {
+            25% { border-color: transparent; background-color: transparent; }
+            50% { border-right-color: transparent; background-color: transparent; }
+            75% { border-right-color: transparent; }
+        }
+        @-moz-keyframes dot {
+            25% { border-color: transparent; background-color: transparent; }
+            50% { border-right-color: transparent; background-color: transparent; }
+            75% { border-right-color: transparent; }
+        }
+        @-webkit-keyframes dot {
+            25% { border-color: transparent; background-color: transparent; }
+            50% { border-right-color: transparent; background-color: transparent; }
+            75% { border-right-color: transparent; }
+        }
+        @keyframes dot {
+            25% { border-color: transparent; background-color: transparent; }
+            50% { border-right-color: transparent; background-color: transparent; }
+            75% { border-right-color: transparent; }
+        }
+        /* 打印效果 */
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 15px; }
+        }
+        /* 光标闪啊闪 */
+        @keyframes blink-caret {
+            from, to { box-shadow: 1px 0 0 0 transparent; }
+            50% { box-shadow: 1px 0 0 0; }
+        }
+    </style>
+</head>
+<body>
+<div style="text-align: center;
+    top: 20vh;
+    position: relative;" id="tip">正在分配人工客服<span class="dotting" id="donate"></span></div>
+<script type='text/javascript'>
+    function getQueryString(name) {
+        let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        let r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            return unescape(r[2]);
+        };
+        return null;
+    }
+    function start_s() {
+        open();
+    }
+    function open(){
+        document.getElementById('tip').style.display = 'none'
+        _MEIQIA('showPanel');
+    }
+</script>
+<script type='text/javascript'>
+    let token = getQueryString('token') || '5dc6ee57f785ed386e4fa5ba73f21ec5';
+    (function(m, ei, q, i, a, j, s) {
+        m[i] = m[i] || function() {
+            (m[i].a = m[i].a || []).push(arguments)
+        };
+        j = ei.createElement(q),
+            s = ei.getElementsByTagName(q)[0];
+        j.async = true;
+        j.charset = 'UTF-8';
+        j.src = 'https://static.meiqia.com/dist/meiqia.js';
+        s.parentNode.insertBefore(j, s);
+    })(window, document, 'script', '_MEIQIA');
+    _MEIQIA('entId', token);
+    _MEIQIA('withoutBtn');
+    _MEIQIA('allSet', start_s);
+    _MEIQIA('init');
+</script>
+</body>
+</html>
